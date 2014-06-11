@@ -1,0 +1,34 @@
+<br><br><br>
+<div class="row">
+	<div class="col-md-4 col-md-offset-4">
+		<form action="/logueo" method="post" role="form" id="form">
+			<legend>Iniciar session</legend>		
+			<div class="form-group">
+				<label for="usuario">Usuario: </label>
+				<input type="text" class="form-control" id="usuario" placeholder="Usuario" name ="usuario" required>
+			</div>		
+			<div class="form-group">
+				<label for="contrasena">Contraseña: </label>
+				<input type="password" class="form-control" id="contrasena" placeholder="Contraseña" name="contrasena" required>
+			</div>		
+			<button type="submit" class="btn btn-primary" id="boton" >Ingresar</button>
+		</form>
+	</div>
+</div>
+<script type="text/javascript">
+	var usuario, contrasena;
+ 	$("#form").submit(function(e) {
+ 		e.preventDefault();
+ 		usuario = $("#usuario").val();
+ 		contrasena = $("#contrasena").val();
+		$.post( "/logueo", { usuario: usuario, contrasena: contrasena })
+			.done(function( data ) {
+				if (data == "ingreso") {	
+					$(location).attr('href','home');
+				}
+				else{
+					alert("El usuario o la contraseña no son correctos");
+				}
+			});	
+	});
+</script>
