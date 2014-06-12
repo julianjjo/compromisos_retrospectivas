@@ -13,9 +13,9 @@
 				<div class="checkbox">
 				    <label>
 				    	<% if compromiso.realizado == true %>
-								<input type="checkbox" name="realizado" checked> <%= compromiso.compromiso %>
+								<input type="checkbox" name="realizado-<%= compromiso.compromiso %>" checked> <%= compromiso.compromiso %>
 				    	<% else %>	
-				    		<input type="checkbox" name="realizado" > <%= compromiso.compromiso %>
+				    		<input type="checkbox" name="realizado-<%= compromiso.compromiso %>" > <%= compromiso.compromiso %>
 				    	<% end %>				      
 				    </label>
 				</div>	

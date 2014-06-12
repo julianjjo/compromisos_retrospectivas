@@ -66,11 +66,17 @@ put '/actualizarealizado' do
 	if session[:usuario].nil? && session[:usuario].nil?
 		redirect '/'
 	else	
-		if params[:realizado] == "on"
-			Compromiso.update(:realizado => true)	
-		else 
-			Compromiso.update(:realizado => false)	
+		@compromisos = Compromiso.all
+		@compromisos.each do |compromiso|
+			if params["realizado-#{compromiso.compromiso}"] == "on"
+				zoo  = Compromiso.first(:compromiso => compromiso.compromiso)  
+				zoo.update(:realizado => true)	
+			else 
+				zoo  = Compromiso.first(:compromiso => compromiso.compromiso) 
+				zoo.update(:realizado => false)	
+			end
 		end
+		
 		redirect '/home'	
 	end
 end
