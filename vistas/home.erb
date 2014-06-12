@@ -1,0 +1,27 @@
+<div class="row">
+	<div class="col-md-3 pull-right">
+		<a href="/crearcompromiso" class="btn btn-success text-right">Crear compromiso</a>
+		<br><br>
+	</div>
+</div>	
+<div class="row">
+	<div class="col-md-10 col-md-offset-1">
+		<form action="/actualizarealizado" method="post" role="form" id="form">
+			<input type="hidden" name="_method" value="put" />
+			<legend>Compromisos</legend>	
+			<% @compromisos.each do |compromiso| %>					
+				<div class="checkbox">
+				    <label>
+				    	<% if compromiso.realizado == true %>
+								<input type="checkbox" name="realizado" checked> <%= compromiso.compromiso %>
+				    	<% else %>	
+				    		<input type="checkbox" name="realizado" > <%= compromiso.compromiso %>
+				    	<% end %>				      
+				    </label>
+				</div>	
+			<% end %>
+			<br><br>
+			<button type="submit" class="btn btn-primary" id="boton" >Actualizar</button>
+		</form>
+	</div>
+</div>

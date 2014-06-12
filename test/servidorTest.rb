@@ -27,8 +27,20 @@ describe "Retrospectiva compromisos" do
     post '/logueo', {:usuario => "admin" , :contrasena => "locxue2540"}
     assert_equal 'ingreso', last_response.body
   end
-  it "pagina inicial" do
+  it "no tener acceso a la pagina inicial" do
     get '/home'
-    assert last_response.ok?
+    assert_equal 302, last_response.status
+  end
+  it "no tener acceso a formulario crear compromiso de retrospectiva" do
+    get '/crearcompromiso'
+    assert_equal 302, last_response.status
+  end
+  it "no tener acceso a crear compromiso de retrospectiva" do
+    post '/crearcompromiso'
+    assert_equal 302, last_response.status
+  end
+  it "actualizar si esta o no realizado de compromiso" do
+    put '/actualizarealizado'
+    assert_equal 302, last_response.status
   end
 end
