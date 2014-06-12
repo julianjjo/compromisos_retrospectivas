@@ -75,8 +75,7 @@ put '/actualizarealizado' do
 				zoo  = Compromiso.first(:compromiso => compromiso.compromiso) 
 				zoo.update(:realizado => false)	
 			end
-		end
-		
+		end		
 		redirect '/home'	
 	end
 end
